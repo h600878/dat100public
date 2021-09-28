@@ -74,16 +74,39 @@ public class GameController {
 
 	private boolean checkHorizontal(int y, char player) {
 
-		boolean allequal = true;
+		boolean allequal = false;
 
 		// TicTacToe.SIZE gir størrelse på brettet
+		//System.out.println(y + " " + player);
+		for (int r = 0; r < board.length; r++) {
+			for (int k = 0; k < board[r].length; k++) {
+				System.out.print(board[r][k] + "\t");
+				//TODO You know what to do!
+				switch (k) {
+					case 0 -> {
+						if (board[r][k] == 'X' && board[r][k-1] == 'X' && board[r][k+1] == 'X' ) {
+							allequal = true;
+						}
+					}
+					case 1 -> {
+						if (board[r][k] == board[r][k - 1] && board[r][k] == board[r][k + 1]) {
+							allequal = true;
+						}
+					}
+					case 2 -> {
+						if (board[r][k] == board[r][k - 2] && board[r][k] == board[r][k - 1]) {
+							allequal = true;
+						}
+					}
+				}
 
-		// TODO - START
+				System.out.println();
+			}
+			System.out.println();
 
-		// TODO - SLUTT
-
-		// return allequal;
-		return false; // REMOVE ME
+			// TODO - SLUTT
+		}
+		return allequal;
 	}
 
 	private boolean checkVertical(int x, char player) {
